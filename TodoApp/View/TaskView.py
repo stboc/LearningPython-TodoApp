@@ -1,13 +1,18 @@
 import tkinter as tk
 
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from TodoApp.Controller.TaskViewController import TaskViewController
+
 class TaskView(tk.Frame):
     def __init__(self, parent:tk.Frame, task_name:str, is_resolved:bool):
         super().__init__(parent)
         
-        self.controller = None
+        self.controller:'TaskViewController' = None
         
-        self.task_name = tk.Label(self, text=f"{task_name}")
-        self.task_name.pack(side="left")
+        self.task_name = task_name
+        self._task_name_label = tk.Label(self, text=f"{task_name}")
+        self._task_name_label.pack(side="left")
         
         self._delete_button = tk.Button(self, text="x", command=self._delete_button_command)
         self._delete_button.pack(side="right")

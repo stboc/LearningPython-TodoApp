@@ -1,7 +1,11 @@
 import tkinter as tk
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from TodoApp.Controller.MainViewController import MainViewController
+    from TodoApp.View.TaskListView import TaskListView
 
 class MainView(tk.Frame):
-    def __init__(self, root, controller, task_list_view, *args, **kwargs):
+    def __init__(self, root:tk.Tk, controller:'MainViewController', task_list_view:'TaskListView', *args, **kwargs):
         super().__init__(root, *args, **kwargs)
         root.geometry("300x400")
         
